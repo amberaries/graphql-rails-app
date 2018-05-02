@@ -3,11 +3,13 @@ module Types
     name "Book"
     description "a book"
 
-    field :id, !types.Int
+    field :id, !types.ID
     field :title, !types.String do
       resolve -> (book, args, ctx) {
-        book.user.email + "-" + book.title
+        book.title + ". Genre - " + Faker::Book.genre
       }
     end
+
+    field :user, !UserType
   end
 end

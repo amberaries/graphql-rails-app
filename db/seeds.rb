@@ -12,7 +12,7 @@ SEPARATOR = BOOKS_TITLES.length * 0.4
 
 BOOK_USERS = {
   'anr@anadeainc.com' => BOOKS_TITLES[0, SEPARATOR],
-  'gpk@anadeainc.c0m' => BOOKS_TITLES[SEPARATOR..-1]
+  'gpk@anadeainc.com' => BOOKS_TITLES[SEPARATOR..-1]
 }
 
 BOOK_USERS.each do |email, books|

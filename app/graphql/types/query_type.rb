@@ -1,24 +1,19 @@
 Types::QueryType = GraphQL::ObjectType.define do
   name "Query"
 
-  field :testField, types.String do
-    description "An example field added by the generator"
+  field :users, types[Types::UserType] do
+    description "Get users stuff"
     resolve ->(root, args, ctx) {
-      "Hello World!"
+      User.all
     }
   end
 
-  field :first, Types::UserType do
-    description "Returns first email"
+  field :user do
+    type Types::UserType
+    description "Get the user stuff"
+    argument :id, !types.ID
     resolve ->(root, args, ctx) {
-      User.first
-    }
-  end
-
-  field :second, Types::UserType do
-    description "Returns second email"
-    resolve ->(root, args, ctx) {
-      User.last
+      User.find(args["id"])
     }
   end
 
@@ -26,6 +21,15 @@ Types::QueryType = GraphQL::ObjectType.define do
     description "Get books stuff"
     resolve ->(root, args, ctx) {
       Book.all
+    }
+  end
+
+  field :book do
+    type Types::BookType
+    description "Get the book stuff"
+    argument :id, !types.ID
+    resolve ->(root, args, ctx) {
+      Book.find(args["id"])
     }
   end
 end
