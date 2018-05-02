@@ -32,4 +32,20 @@ Types::QueryType = GraphQL::ObjectType.define do
       Book.find(args["id"])
     }
   end
+
+  field :whois do
+    type Types::UserType
+    description "Get current user stuff"
+    resolve ->(root, args, ctx) {
+      ctx[:current_user]
+    }
+  end
+
+  field :mineBooks do
+    type Types::UserType
+    description "Get current user stuff"
+    resolve ->(root, args, ctx) {
+      ctx[:current_user]
+    }
+  end
 end
