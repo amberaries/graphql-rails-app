@@ -5,12 +5,10 @@ default: &default
 
 development:
   <<: *default
-  username: anr
   database: graphql_rails_app_dev
 
 test:
   <<: *default
-  username: anr
   database: graphql_rails_app_test
 
 production:
